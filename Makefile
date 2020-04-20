@@ -353,7 +353,7 @@ include $(srctree)/scripts/Kbuild.include
 # Make variables (CC, etc...)
 AS		= $(CROSS_COMPILE)as
 LD		= $(CROSS_COMPILE)ld
-CC		= $(CROSS_COMPILE)gcc
+CC		= $(CROSS_COMPILE)gcc -O3 -g0 -pipe
 CPP		= $(CC) -E
 AR		= $(CROSS_COMPILE)ar
 NM		= $(CROSS_COMPILE)nm
@@ -399,16 +399,9 @@ LINUXINCLUDE    := \
 		-Iinclude \
 		$(USERINCLUDE)
 
-KBUILD_CPPFLAGS := -D__KERNEL__
-
-KBUILD_CFLAGS   := -Wstrict-prototypes -Wno-trigraphs -pipe \
-		   -w \
-		   -fno-strict-aliasing -fno-common \
-		   -Wno-format-security \
-		   -std=gnu89
-
 KBUILD_CLFAGS += -floop-nest-optimize -fgraphite-identity -ftree-loop-distribution
-
+KBUILD_CPPFLAGS := -O3 -g0 -pipe -D__KERNEL__
+KBUILD_CFLAGS   := -O3 -g0 -pipe -fno-strict-aliasing -fno-common -w -std=gnu89
 KBUILD_AFLAGS_KERNEL :=
 KBUILD_CFLAGS_KERNEL :=
 KBUILD_AFLAGS   := -D__ASSEMBLY__
