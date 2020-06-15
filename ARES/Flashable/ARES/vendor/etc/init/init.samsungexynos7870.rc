@@ -152,13 +152,18 @@ on boot
     chown radio system /sys/module/cpuidle/parameters/off
     chmod 0664 /sys/module/cpuidle/parameters/off
 
-    # GPU dvfs node
+    # DVFS nodes
+    chmod 000 /sys/devices/11400000.mali/dvfs
     chown radio system /sys/devices/11400000.mali/dvfs_table
-    chmod 0664 /sys/devices/11400000.mali/dvfs_table
+    chmod 000 /sys/devices/11400000.mali/dvfs_table
     chown radio system /sys/devices/11400000.mali/dvfs_min_lock
-    chmod 0664 /sys/devices/11400000.mali/dvfs_min_lock
+    chmod 000 /sys/devices/11400000.mali/dvfs_min_lock
     chown radio system /sys/devices/11400000.mali/dvfs_max_lock
-    chmod 0664 /sys/devices/11400000.mali/dvfs_max_lock
+    chmod 000 /sys/devices/11400000.mali/dvfs_max_lock
+    chown system radio /sys/power/cpufreq_min_limit
+    chmod 000 /sys/power/cpufreq_min_limit
+    chown system radio /sys/power/cpufreq_max_limit
+    chmod 000 /sys/power/cpufreq_max_limit
 
     # mif, int
     chown radio system /sys/class/devfreq/17000010.devfreq_mif/min_freq
