@@ -34,6 +34,7 @@
 #include <linux/fb.h>
 
 #define ASMP_TAG "AutoSMP: "
+#define ASMP_STARTDELAY 20000
 
 struct asmp_load_data {
 	u64 prev_cpu_idle;
