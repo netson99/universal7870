@@ -107,8 +107,8 @@ on boot
     # to improve allocation times
 #    write /proc/sys/vm/min_free_kbytes 32768
 #    write /proc/sys/vm/min_free_order_shift 1
-
-# AresKernel
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor "interactive"
     write /sys/module/autosmp/parameters/enabled "Y"
     write /sys/kernel/autosmp/conf/max_cpus_bc "4"
     write /sys/kernel/autosmp/conf/max_cpus_lc "4"
