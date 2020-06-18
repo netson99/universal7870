@@ -122,12 +122,12 @@ read -p "Variant? (1 (oneUI) | 2 (TREBLE) > " aud
 if [ "$aud" = "TREBLE" -o "$aud" = "2" ]; then
      echo "Build TREBLE Variant"
      CR_MODE="2"
-     CR_PERMISSIVE="1"
+     CR_PERMISSIVE="0"
 else
      echo "Build OneUI Variant"
      CR_MODE="1"
      CR_HALLIC="1"
-     CR_PERMISSIVE="1"
+     CR_PERMISSIVE="0"
 fi
 
 # Options
