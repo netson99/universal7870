@@ -34,12 +34,6 @@ on post-fs-data
     write /sys/kernel/autosmp/conf/max_cpus_bc "4"
     write /sys/kernel/autosmp/conf/max_cpus_lc "4"
     write /sys/kernel/autosmp/conf/min_cpus_bc "1"
-    write /sys/block/mmcblk0/queue/scheduler "fiops"
-    write /sys/block/mmcblk1/queue/scheduler "fiops"
-    write /sys/block/sda/queue/scheduler "fiops"
-    write /sys/block/sdb/queue/scheduler "fiops"
-    write /sys/block/sdc/queue/scheduler "fiops"
-    write /sys/block/vnswap0/queue/scheduler "fiops"
 # OLAF setup cgroup freezer
     mkdir /dev/freezer
     mount cgroup none /dev/freezer freezer
@@ -113,12 +107,6 @@ on boot
     write /sys/kernel/autosmp/conf/max_cpus_bc "4"
     write /sys/kernel/autosmp/conf/max_cpus_lc "4"
     write /sys/kernel/autosmp/conf/min_cpus_bc "1"
-    write /sys/block/mmcblk0/queue/scheduler "fiops"
-    write /sys/block/mmcblk1/queue/scheduler "fiops"
-    write /sys/block/sda/queue/scheduler "fiops"
-    write /sys/block/sdb/queue/scheduler "fiops"
-    write /sys/block/sdc/queue/scheduler "fiops"
-    write /sys/block/vnswap0/queue/scheduler "fiops"
 
 # SSWAP
     write /proc/sys/vm/swappiness 145
