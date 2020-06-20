@@ -37,7 +37,7 @@ CR_DTB=$CR_DIR/boot.img-dtb
 CR_VERSION=V3.1
 CR_NAME=AresKernel
 # Thread count
-CR_JOBS=$(nproc --all)
+CR_JOBS=$(nproc --ignore=1)
 # Target android version and platform (7/n/8/o/9/p)
 CR_ANDROID=q
 CR_PLATFORM=10.0.0
@@ -58,7 +58,7 @@ CR_DTSFILES_A320X="exynos7870-a3y17lte_eur_open_00.dtb exynos7870-a3y17lte_eur_o
 CR_CONFG_A320X=exynos7870-a3y17lte_defconfig
 CR_VARIANT_A320X=A320X
 # Device specific Variables [SM-J530_2GB (F/G/S/L/K)]
-CR_DTSFILES_J530X="exynos7870-j5y17lte_eur_open_00.dtb exynos7870-j5y17lte_eur_open_01.dtb exynos7870-j5y17lte_eur_open_02.dtb exynos7870-j5y17lte_eur_open_03.dtb exynos7870-j5y17lte_eur_open_05.dtb exynos7870-j5y17lte_eur_open_07.dtb"
+CR_DTSFILES_J530X="exynos7870-j5y17lte_sea_openm_03.dtb exynos7870-j5y17lte_sea_openm_05.dtb exynos7870-j5y17lte_sea_openm_07.dtb exynos7870-j5y17lte_eur_open_00.dtb exynos7870-j5y17lte_eur_open_01.dtb exynos7870-j5y17lte_eur_open_02.dtb exynos7870-j5y17lte_eur_open_03.dtb exynos7870-j5y17lte_eur_open_05.dtb exynos7870-j5y17lte_eur_open_07.dtb"
 CR_CONFG_J530X=exynos7870-j5y17lte_defconfig
 CR_VARIANT_J530X=J530X
 # Device specific Variables [SM-J530_3GB (Y/YM/FM/GM)]
@@ -122,6 +122,7 @@ read -p "Variant? (1 (oneUI) | 2 (TREBLE) > " aud
 if [ "$aud" = "TREBLE" -o "$aud" = "2" ]; then
      echo "Build TREBLE Variant"
      CR_MODE="2"
+     CR_HALLIC="1"
      CR_PERMISSIVE="0"
 else
      echo "Build OneUI Variant"
