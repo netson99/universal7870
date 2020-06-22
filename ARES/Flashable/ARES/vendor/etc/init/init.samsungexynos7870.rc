@@ -24,16 +24,6 @@ on post-fs
     setrlimit 8 67108864 67108864
 
 on post-fs-data
-    write /sys/devices/system/cpu/cpu0/online 1
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor performance
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1794000
-    write /sys/devices/system/cpu/cpu4/online 1
-    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor performance
-    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 1794000
-    write /sys/module/autosmp/parameters/enabled "Y"
-    write /sys/kernel/autosmp/conf/max_cpus_bc "4"
-    write /sys/kernel/autosmp/conf/max_cpus_lc "4"
-    write /sys/kernel/autosmp/conf/min_cpus_bc "1"
 # OLAF setup cgroup freezer
     mkdir /dev/freezer
     mount cgroup none /dev/freezer freezer
@@ -101,12 +91,6 @@ on boot
     # to improve allocation times
 #    write /proc/sys/vm/min_free_kbytes 32768
 #    write /proc/sys/vm/min_free_order_shift 1
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
-    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor "interactive"
-    write /sys/module/autosmp/parameters/enabled "Y"
-    write /sys/kernel/autosmp/conf/max_cpus_bc "4"
-    write /sys/kernel/autosmp/conf/max_cpus_lc "4"
-    write /sys/kernel/autosmp/conf/min_cpus_bc "1"
 
 # SSWAP
     write /proc/sys/vm/swappiness 145
@@ -251,6 +235,11 @@ on boot
     chmod 0660 /sys/devices/system/cpu/cpu4/cpufreq/interactive/io_is_busy
 	
 	#Setting Governor Parameters
+    write /sys/module/autosmp/parameters/enabled Y
+    write /sys/kernel/autosmp/conf/max_cpus_bc 4
+    write /sys/kernel/autosmp/conf/max_cpus_lc 4
+    write /sys/kernel/autosmp/conf/min_cpus_bc 1
+    write /sys/kernel/autosmp/conf/min_cpus_lc 1
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay "39000 1248000:19000"
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse_duration 40000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 89  
